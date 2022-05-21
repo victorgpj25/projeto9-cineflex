@@ -25,7 +25,7 @@ export default function Filmes () {
 
     const displayFilmes = posters.map( (poster, index) => {
         return (
-            <StyledLink to={`/sessoes/:${poster.idFilme}`} key={index} >
+            <StyledLink to={`/sessoes/${poster.idFilme}`} key={index} >
                 <img src={poster.imgFilme} alt={poster.titulofilme} />
             </StyledLink>
         )
