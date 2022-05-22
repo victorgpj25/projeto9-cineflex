@@ -16,7 +16,6 @@ export default function Sessoes () {
 		const requisicao = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`);
 
 		requisicao.then(resposta => {
-            console.log(resposta.data)
             setFilmeInfo({filme: resposta.data.title, imgFilme: resposta.data.posterURL,})
             setSessoes(resposta.data.days.map(sessao => {
                 return {diaSemana: sessao.weekday, data: sessao.date, horarios: sessao.showtimes}
@@ -116,7 +115,7 @@ const Container = styled.div`
 	width: 100%;
     height:100%;
 
-    margin-top: 67px;
+    margin: 67px 0 150px 0;
     display: flex;
     flex-direction: column;
     align-items:center;
@@ -194,8 +193,4 @@ const Container = styled.div`
 
         color: #293845;
     }
-
-    
-
-
 `;
