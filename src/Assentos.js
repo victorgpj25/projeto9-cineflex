@@ -12,6 +12,8 @@ export default function Assentos ({statusAssento, sessaoInfo, setSessaoInfo, fin
    
 	useEffect(() => {
         setAssentosSelecionados([])
+        setNomeComprador([])
+        setCpfComprador([])
 		const requisicao = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
 
 		requisicao.then(resposta => {

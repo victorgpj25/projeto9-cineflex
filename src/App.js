@@ -1,6 +1,7 @@
 import React from 'react'
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useState } from "react"
+import axios from "axios"
 
 import GlobalStyle from "./globalStyles"
 import Header from "./Header.js"
@@ -30,7 +31,7 @@ export default function App () {
     
         } else {
             setAssentosSelecionados([...assentosSelecionados, {numAssento, idAssento}])
-            console.log(assentosSelecionados)
+
         }
 
     }
@@ -39,7 +40,21 @@ export default function App () {
 
     function finalizarPedido (event) {
         event.preventDefault();
-        navigate("/sucesso")
+
+        const idsAssentos = assentosSelecionados.map(assento => assento.idAssento)
+
+        const body = {
+            ids: idsAssentos,
+            name: nomeComprador,
+            cpf: cpfComprador
+        }
+
+        const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", body)
+
+        promise.then(
+            navigate("/sucesso")
+        )
+
     }
 
     return (
